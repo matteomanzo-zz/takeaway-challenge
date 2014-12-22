@@ -24,6 +24,14 @@ The CUSTOMER *place* the ORDER (quantity and total of the MENU's dishes).
 As soon as the SHOP *checks* the total, it will *send* a TEXT to the CUSTOMER saying that the ORDER was successfully *taken* and it will be *delivered* in one hour.
 If the total doesn't match with the sum of the prices, an error will raise.
 
+#Menu
+
+Responsabilities  |  Collaborators
+------------------|----------------
+  Contain dishes  |	      -
+  Contain prices  |       -
+-----------------------------------
+
 #Customer
 
 Responsabilities  |  Collaborators
@@ -49,13 +57,6 @@ Responsabilities  |  Collaborators
   Check the total | Customer, Menu
 -----------------------------------
 
-#Menu
-
-Responsabilities  |  Collaborators
-------------------|----------------
-  Contain dishes  |	      -
-  Contain prices  |       -
------------------------------------
 
 #Text
 
