@@ -5,6 +5,6 @@ describe Menu do
   let(:menu) {Menu.new}
 
     it 'should contain dishes' do
-      expect(menu.dishes)
+      expect(menu.dishes).to eq(@dishes)
     end
 end
