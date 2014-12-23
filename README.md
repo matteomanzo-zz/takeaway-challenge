@@ -57,7 +57,6 @@ Responsabilities  |  Collaborators
   Check the total | Customer, Menu
 -----------------------------------
 
-
 #Text
 
 Responsabilities  |  Collaborators
