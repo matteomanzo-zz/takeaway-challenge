@@ -1,4 +1,4 @@
-DISHES = [{item: 'chicken caesar salad', price: 10},
-          {item: 'spaghetti bolognese', price: 12},
-          {item: 'hamburger', price: 15},
-          {item: 'pizza', price: 12}]
+DISHES = [{name: 'chicken caesar salad', price: 10},
+          {name: 'spaghetti bolognese', price: 12},
+          {name: 'hamburger', price: 15},
+          {name: 'pizza', price: 12}]

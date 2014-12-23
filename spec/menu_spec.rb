@@ -5,7 +5,7 @@ describe Menu do
   let(:menu) {Menu.new}
 
     it 'should contain dishes' do
-      expect(menu.dishes[0][:item]).to eq 'chicken caesar salad'
+      expect(menu.dishes.length).not_to be 0
     end
 
     it 'can add dishes' do

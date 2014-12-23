@@ -8,11 +8,11 @@ class Menu
     @dishes = DISHES
   end
 
-  def add_dish(name, price)
-    DISHES << {item: name, price: price}
+  def add_dish(dish_name, dish_price)
+    DISHES << {name: dish_name, price: dish_price}
   end
 
-  def remove_dish(dish)
-    DISHES.delete_if{|elem| elem[:item] == dish}
+  def remove_dish(dish_name)
+    DISHES.delete_if{|elem| elem[:name] == dish_name}
   end
 end
