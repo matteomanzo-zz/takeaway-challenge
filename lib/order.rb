@@ -4,6 +4,6 @@ class Order
 
  def initialize
   @customer_order = []
-end
+ end
 
 end
