@@ -9,7 +9,7 @@ describe Customer do
     expect(customer.new_order).to be_empty
   end
 
-  it 'can place an order' do
-    expect{customer.place_order('hamburger', 3, 45)}.to change{customer.new_order}
+  xit 'can place an order' do
+    expect{customer.place_order}.to change{customer.new_order}
   end
 end

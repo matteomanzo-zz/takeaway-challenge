@@ -13,6 +13,6 @@ describe Menu do
     end
 
     it 'can remove dishes' do
-      expect{menu.remove_dish('pizza')}.to change{menu.dishes.length}.by -1
+      expect{menu.remove_dish('pizza margherita')}.to change{menu.dishes.length}.by -1
     end
 end
