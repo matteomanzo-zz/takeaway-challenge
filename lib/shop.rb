@@ -1,12 +1,14 @@
 require 'menu'
 require 'DISHES'
+require 'customer'
 
 class Shop
 
-  attr_reader :menu
+  attr_reader :menu, :order
 
-  def initialize(menu = @dishes)
+  def initialize(menu = DISHES)
     @menu = menu
+    @order = []
   end
 
   def check_price(dish_name)
@@ -15,4 +17,7 @@ class Shop
     price
   end
 
+  def receive(order)
+    @order << order
+  end
 end

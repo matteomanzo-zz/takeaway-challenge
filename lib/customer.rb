@@ -1,16 +1,16 @@
-require 'order'
-require 'dishes'
+require 'DISHES'
+require 'shop'
 
 class Customer
 
-  attr_reader :order
+  attr_reader :new_order
 
-  def initialize
-    @order = []
+  def initialize(order = @new_order)
+    @new_order = []
   end
 
   def place_order(dish, quantity, paying)
-      @order << {:dish => dish, :quantity => quantity.to_i, :paying => paying.to_i}
+    @new_order << {:dish => dish, :quantity => quantity.to_i, :paying => paying.to_i}
   end
 
 end
