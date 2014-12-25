@@ -9,10 +9,10 @@ describe Menu do
     end
 
     it 'can add dishes' do
-      expect{menu.add_dish('piadina', 5)}.to change{menu.dishes.size}.by 1
+      expect{menu.add_dish('piadina', 5)}.to change{menu.dishes.length}.by 1
     end
 
     it 'can remove dishes' do
-      expect{menu.remove_dish('pizza')}.to change{menu.dishes.size}.by -1
+      expect{menu.remove_dish('pizza')}.to change{menu.dishes.length}.by -1
     end
 end

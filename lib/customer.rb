@@ -1,4 +1,3 @@
-require 'DISHES'
 require 'shop'
 
 class Customer
@@ -12,5 +11,4 @@ class Customer
   def place_order(dish, quantity, paying)
     @new_order << {:dish => dish, :quantity => quantity.to_i, :paying => paying.to_i}
   end
-
 end
