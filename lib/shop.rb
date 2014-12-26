@@ -4,22 +4,23 @@ require_relative 'customer'
 
 class Shop
 
-  attr_reader :menu, :order, :name, :price, :customer
+  attr_reader :menu, :menu_list, :order, :name, :price, :customer
 
   def initialize(menu = Menu.new)
-    @menu = menu.dishes
+    @menu = menu
+    @menu_list = menu.dishes
     @order = []
     @customer = Customer.new
   end
 
   def check_price(dish_name)
     price = 0
-    menu.each {|dish| price = dish[:price].to_i if dish[0].to_s == dish_name}
+    menu_list.each {|dish| price = dish[1] if dish[0].to_s == dish_name}
     price
   end
 
-  def receive_order(dish, quantity, paying)
-    @order << {:dish => dish, :quantity => quantity.to_i, :paying => paying.to_i}
+  def receive_order(order)
+    @order << order
   end
 
   def view_order

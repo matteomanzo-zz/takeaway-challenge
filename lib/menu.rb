@@ -28,6 +28,6 @@ class Menu
   end
 
   def remove_dish(dish_name)
-    dishes.delete_if{|elem| elem[0].to_s == dish_name}
+    dishes.delete_if{|elem| elem[name].to_s == dish_name}
   end
 end

@@ -12,7 +12,7 @@ describe Shop do
   before {allow(customer).to receive(:place_order)}
 
   it 'should contain a menu' do
-    expect(shop.menu).to eq(menu.dishes)
+    expect(shop.menu_list).to include(menu.dishes)
   end
 
   it 'should check if there is an order' do
@@ -20,15 +20,18 @@ describe Shop do
   end
 
   it 'can check the prices of the dishes' do
-    expect(shop.check_price('hamburger')).to eq(15)
+    expect(shop.check_price('beef burger')).to eq(15)
   end
 
-  it 'should display the customer payment' do
-    customer.place_order('pizza', 2, 24)
-    expect(shop.dishes_cost(customer.new_order)).to eq 24
+  it 'should check the customer payment' do
+
   end
 
   it 'should check the total' do
-    expect(shop.right_payment?).to eq true
+
+  end
+
+  it 'should compare the payment with the total' do
+    
   end
 end
