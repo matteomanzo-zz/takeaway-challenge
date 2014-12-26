@@ -33,7 +33,7 @@ def choices(select)
     when '1' then @customer.place_order
     when '2' then @customer.view_order
     when '3' then @customer.delete_item
-    when '4' then 
+    when '4' then @customer.new_order.clear
     when '5' then 
     when '9' then exit
     
