@@ -12,4 +12,9 @@ describe Customer do
   xit 'can place an order' do
     expect{customer.place_order}.to change{customer.new_order}
   end
+
+  xit 'can delete an order' do
+    customer.place_order
+    expect{customer.delete_order}.to change{customer.new_order}.to be_empty
+  end
 end

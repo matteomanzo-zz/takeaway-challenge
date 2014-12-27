@@ -23,8 +23,8 @@ describe Shop do
     expect(shop.check_price('beef burger')).to eq(15)
   end
 
-  it 'should check the customer payment' do
-
+  it 'should view the customer payment' do
+    expect(shop.view_customer_payment).to eq(customer.new_order[2])
   end
 
   it 'should check the total' do
@@ -32,6 +32,6 @@ describe Shop do
   end
 
   it 'should compare the payment with the total' do
-    
+
   end
 end

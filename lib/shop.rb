@@ -26,4 +26,9 @@ class Shop
   def view_order
     puts @order
   end
+
+  def view_customer_payment
+    customer.new_order[2]
+  end
+
 end

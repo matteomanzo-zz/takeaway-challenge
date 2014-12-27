@@ -34,4 +34,8 @@ class Customer
     dish = gets.chomp
     new_order.delete_if{|elem| dish == elem[:dish]}
   end
+
+  def delete_order
+    @new_order.clear
+  end
 end
