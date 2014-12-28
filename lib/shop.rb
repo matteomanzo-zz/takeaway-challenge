@@ -1,34 +1,36 @@
-require 'csv'
-require_relative 'menu'
-require_relative 'customer'
+require_relative 'menu.rb'
+require_relative 'customer.rb'
 
 class Shop
 
-  attr_reader :menu, :menu_list, :order, :name, :price, :customer
+  attr_reader :menu, :order, :order_total, :customer, :total, :orded_dishes, :cost_total
 
-  def initialize(menu = Menu.new)
+  def initialize(menu = Menu.new, customer = Customer.new)
     @menu = menu
-    @menu_list = menu.dishes
+    @customer = customer
     @order = []
-    @customer = Customer.new
+    @total = []
+    @orded_dishes = []
+    @cost_total = []
   end
 
-  def check_price(dish_name)
-    price = 0
-    menu_list.each {|dish| price = dish[1] if dish[0].to_s == dish_name}
-    price
+  def customer_dishes
+    customer.basket.each{|cust_dish| orded_dishes << cust_dish[:name]}
+    orded_dishes
   end
 
-  def receive_order(order)
-    @order << order
+  def customer_total
+    @order_total = customer.basket.inject(0){|sum, cust_dish| sum = sum + cust_dish[:paid]}
   end
 
-  def view_order
-    puts @order
+  def total_cost
+    self.menu.dishes.each{|dish| customer.basket.each{|cust_dish| @total << (dish[:price].to_i * cust_dish[:quantity].to_i) if cust_dish[:name] == dish[:name]}}
+    @cost_total = @total.inject(0){|sum, price| sum = sum + price}
   end
 
-  def view_customer_payment
-    customer.new_order[2]
+  def right_payment?
+    customer_total
+    total_cost
+    order_total == cost_total
   end
-
 end

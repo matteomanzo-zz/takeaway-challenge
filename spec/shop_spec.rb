@@ -1,37 +1,37 @@
 require 'shop'
-require 'menu'
-require 'customer'
 
-
-describe Shop do
+describe Shop do 
 
   let(:shop){Shop.new}
-  let(:menu){Menu.new}
-  let(:customer){Customer.new}
 
-  before {allow(customer).to receive(:place_order)}
-
-  it 'should contain a menu' do
-    expect(shop.menu_list).to include(menu.dishes)
+  it 'should be empty by default' do 
+    expect(shop.order).to be_empty
   end
 
-  it 'should check if there is an order' do
-    expect{shop.receive_order(customer.new_order)}.to change{shop.order}
-  end
+  context 'order' do 
 
-  it 'can check the prices of the dishes' do
-    expect(shop.check_price('beef burger')).to eq(15)
-  end
+     it 'can display the dishes selected by the customer' do 
+      shop.customer.add_dish('pasta', 2, 20)
+      shop.customer.add_dish('burger', 2, 30)
+      expect(shop.customer_dishes).to eq ['pasta', 'burger']
+    end
 
-  it 'should view the customer payment' do
-    expect(shop.view_customer_payment).to eq(customer.new_order[2])
-  end
+    it 'can display the total paid by the customer' do 
+      shop.customer.add_dish('pasta', 2, 20)
+      shop.customer.add_dish('burger', 2, 30)
+      expect(shop.customer_total).to eq 50
+    end
 
-  it 'should check the total' do
+    it 'can display the total cost of the customer order' do 
+      shop.customer.add_dish('pasta', 2, 205)
+      shop.customer.add_dish('burger', 2, 34)
+      expect(shop.total_cost).to eq 50
+    end
 
-  end
-
-  it 'should compare the payment with the total' do
-
+    it 'should compare the total cost with the total paid' do
+      shop.customer.add_dish('pasta', 2, 20)
+      shop.customer.add_dish('burger', 2, 30)
+      expect(shop.right_payment?).to be true
+    end
   end
 end

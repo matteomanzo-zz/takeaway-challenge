@@ -1,33 +1,23 @@
-require 'csv'
-require 'colorize'
+require_relative 'dishes.rb'
 
 class Menu
 
-  attr_reader :dishes, :dishes_list, :name, :price
+  attr_reader :dishes, :names
 
-  def initialize
-    @dishes = {}
-    @dishes_list = []
-    standard_menu
+  def initialize(dishes = DISHES)
+    @dishes = dishes
+    @names = []
   end
 
-  def show
-    dishes_list.each_with_index{|k, i| puts "#{i+1}. #{k}".blue}
+  def dish_names
+    dishes.each{|dish| @names << dish[:name]}
+    @names
   end
+  # def add_dish(dish_name, dish_price)
+  #   dishes << {name: dish_name.to_s, price: dish_price.to_i}
+  # end
 
-  def standard_menu
-    CSV.foreach('dishes.csv') do |elem| 
-      @name = elem[0] ; @price = elem[1]
-      @dishes[@name.to_sym] = @price.to_i
-      @dishes_list << "#{@name}, #{price}"
-    end
-  end
-
-  def add_dish(dish_name, dish_price)
-    dishes[dish_name.to_sym] = dish_price.to_i
-  end
-
-  def remove_dish(dish_name)
-    dishes.delete_if{|elem| elem[name].to_s == dish_name}
-  end
+  # def remove_dish(dish_name)
+  #   dishes.delete_if{|dish| dish[:name].to_s == dish_name}
+  # end
 end

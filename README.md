@@ -20,9 +20,9 @@ Tasks
 CRC
 ---
 
-The CUSTOMER *place* the ORDER (quantity and total of the MENU's dishes).
-As soon as the SHOP *checks* the total, it will *send* a TEXT to the CUSTOMER saying that the ORDER was successfully *taken* and it will be *delivered* in one hour.
-If the total doesn't match with the sum of the prices, an error will raise.
+A MENU contains dishes with prices and a SHOP contains a MENU.
+The CUSTOMER adds dishes to its basket indicating what dish, how many dishes, and how much it is going to pay.
+The SHOP checks the order and, if the payment it's equal to the cost of the dishes it will send an SMS to the CUSTOMER, otherwise it will throw an error.
 
 #Menu
 
@@ -36,17 +36,8 @@ Responsabilities  |  Collaborators
 
 Responsabilities  |  Collaborators
 ------------------|---------------
-  Place an order  |  Shop, Order
+  Place an order  |  Shop, Menu
    Receive text   |	    Shop
-----------------------------------
-
-#Order
-
-Responsabilities  |  Collaborators
-------------------|---------------
-  Be taken        |	  Customer
-  Be checked      |	    Shop
-  Be delivered    |     Shop
 ----------------------------------
 
 #Shop
@@ -62,5 +53,4 @@ Responsabilities  |  Collaborators
 Responsabilities  |  Collaborators
 ------------------|----------------
   Be sent         |	     Shop
-  Be received     |    Customer
 -----------------------------------
