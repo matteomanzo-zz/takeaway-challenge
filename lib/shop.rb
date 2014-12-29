@@ -3,7 +3,7 @@ require_relative 'customer.rb'
 
 class Shop
 
-  attr_reader :menu, :order, :order_total, :customer, :total, :orded_dishes, :cost_total
+  attr_reader :menu, :order, :order_total, :customer, :total, :orded_dishes, :cost_total, :text
 
   def initialize(menu = Menu.new, customer = Customer.new)
     @menu = menu
@@ -33,4 +33,5 @@ class Shop
     total_cost
     order_total == cost_total
   end
+   
 end
