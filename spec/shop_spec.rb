@@ -33,5 +33,17 @@ describe Shop do
       shop.customer.add_dish('burger', 2, 30)
       expect(shop.right_payment?).to be true
     end
+
+    it 'should raise an error if the payment is not correct' do
+      shop.customer.add_dish('pasta', 2, 25)
+      shop.customer.add_dish('burger', 2, 33)
+      expect(lambda {shop.confirm}).to raise_error(RuntimeError, 'Your payment is not correct.')
+    end
+
+    it 'should accept the order if the payment is correct' do
+      shop.customer.add_dish('pasta', 2, 20)
+      shop.customer.add_dish('burger', 2, 30)
+      expect{shop.confirm}.to change{shop.order.length}.by 1
+    end
   end
 end
