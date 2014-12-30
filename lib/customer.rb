@@ -18,5 +18,6 @@ class Customer
 
   def remove_dish(dish_name)
     basket.delete_if{|dish| dish[:name].to_s == dish_name.to_s}
+    puts 'That dish is not in your basket!' if basket.each{|dish| dish[:name].to_s != dish_name.to_s}
   end
 end
