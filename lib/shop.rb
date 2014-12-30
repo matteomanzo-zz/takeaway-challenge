@@ -34,16 +34,12 @@ class Shop
   def right_payment?
     customer_total
     total_cost
+    @total.clear
     order_total == cost_total
   end
 
   def confirm
-    right_payment? ? order << customer.basket : {}
-    if !order.empty?
-      send_text!
-    else
-      raise 'Your payment is not correct.'
-    end
+    right_payment? ? order << customer.basket : (raise 'Your payment is not correct.')
   end
 
   private
