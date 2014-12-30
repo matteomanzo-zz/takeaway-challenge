@@ -25,12 +25,12 @@ end
 
 def options
   puts ''
-  puts ('1.        View the menu'.green.center(@lineWidth-10))
-  puts ('2.   Add a dish to your basket'.green.center(@lineWidth-4))
-  puts ('3.       View your basket'.green.center(@lineWidth-8))
-  puts ('4. Remove a dish from your basket'.green.center(@lineWidth))
-  puts ('5.      Clear your basket'.green.center(@lineWidth-8))
-  puts ('6.      Confirm your order'.green.center(@lineWidth-8))
+  puts ('1.        View the menu'.yellow.center(@lineWidth-10))
+  puts ('2.   Add a dish to your basket'.yellow.center(@lineWidth-4))
+  puts ('3.       View your basket'.yellow.center(@lineWidth-8))
+  puts ('4. Remove a dish from your basket'.yellow.center(@lineWidth))
+  puts ('5.      Clear your basket'.yellow.center(@lineWidth-8))
+  puts ('6.      Confirm your order'.yellow.center(@lineWidth-8))
   puts ('0.             Exit'.light_red.center(@lineWidth-15))
   puts ''
 end
@@ -54,6 +54,7 @@ def select options
     quantity = gets.chomp
     puts ('How much is the total?'.yellow.center(@lineWidth))
     paid = gets.chomp
+    puts ("#{quantity} #{dish_name}s have been successfully added to your basket!".green.center(@lineWidth))
     @shop.customer.add_dish(dish_name, quantity, paid)
   when '3' then puts ('Your current dishes in the basket are:'.yellow.center(@lineWidth))
     puts ''
@@ -69,11 +70,11 @@ def select options
     else
       @shop.customer.remove_dish(dish_name)
       puts ''
-      puts ('The dish has been removed from your basket.'.green.center(@lineWidth))
+      puts ('The dish has been successfully removed from your basket.'.green.center(@lineWidth))
     end
   when '5' then @shop.customer.basket.clear
     puts ('Your basket is now empty.'.yellow.center(@lineWidth))
-  when '6' then @shop.confirm
+  when '6' then @shop.order << @shop.customer.basket if @shop.right_payment?
     !@shop.order.empty? ? send_text! : (puts ('Your payment is not correct!'.red.center(@lineWidth)))
      if !@shop.order.empty? 
       puts ('Great! You will soon receive an sms with the expected delivery time! Goodbye and... Enjoy your meal!!'.green.center(@lineWidth))
