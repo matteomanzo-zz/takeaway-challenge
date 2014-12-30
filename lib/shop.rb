@@ -38,7 +38,7 @@ class Shop
   end
 
   def confirm
-    right_payment? ? order << customer.basket : (raise 'Your payment is not correct.')
+    order << customer.basket if right_payment?
   end
   
 end
