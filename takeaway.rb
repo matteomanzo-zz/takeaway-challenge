@@ -10,12 +10,14 @@ require './AUTH_TOKEN.rb'
 @shop = Shop.new
 @client = Twilio::REST::Client.new ACCOUNT_SID, AUTH_TOKEN
 @view_dishes = []
-@shop.menu.dishes.each {|dish, price| @view_dishes << ("#{dish[:name]} - £#{dish[:price]}".blue.center(@lineWidth))}
+@shop.menu.dishes.each {|dish, price| @view_dishes << ("#{dish[:name]} - £#{dish[:price]}".cyan.center(@lineWidth))}
+@view_basket = []
 
 def intro
   puts ''
   puts ('Welcome to "don\'t cook, just order!"'.yellow.center(@lineWidth))
   puts ''
+  puts ('Here\'s our menu:'.yellow.center(@lineWidth))
   puts @view_dishes
   puts ''
   puts ('Please select an option:'.yellow.center(@lineWidth))
@@ -35,28 +37,48 @@ end
 
 def select options
   case options
-  when '1' then puts @view_dishes
-  when '2' then puts @view_dishes
+  when '1' then puts ('Here\'s our menu:'.yellow.center(@lineWidth))
+    puts @view_dishes
+  when '2' then puts ('Here\'s our menu:'.yellow.center(@lineWidth))
+    puts @view_dishes
     puts ''
-    puts 'Which dish would you like?'
+    puts ('Which dish would you like?'.yellow.center(@lineWidth))
     dish_name = gets.chomp
     while !@shop.menu.dishes.select {|dish| /#{dish[:name]}/ =~ dish_name }.sample
-      puts 'Sorry, we don\'t have that dish!'
+      puts ('Sorry, we don\'t have that dish!'.red.center(@lineWidth))
       puts ''
-      puts 'Which dish would you like?'
+      puts ('Which dish would you like?'.yellow.center(@lineWidth))
       dish_name = gets.chomp
     end
-    puts "How many #{dish_name}s?"
+    puts ("How many portions of #{dish_name} would you like?".yellow.center(@lineWidth))
     quantity = gets.chomp
-    puts 'How much is the total?'
+    puts ('How much is the total?'.yellow.center(@lineWidth))
     paid = gets.chomp
     @shop.customer.add_dish(dish_name, quantity, paid)
-  when '3' then !@shop.customer.basket.empty? ? (puts @shop.customer.basket) : (puts 'Your basket is empty!')
-  when '4' then @shop.customer.remove_dish(gets.chomp)
+  when '3' then puts ('Your current dishes in the basket are:'.yellow.center(@lineWidth))
+    puts ''
+    @shop.customer.basket.each {|dish, price, quantity| @view_basket << ("#{dish[:quantity]} portion/s of #{dish[:name]} - paying £#{dish[:paid]}".cyan.center(@lineWidth))}
+    !@shop.customer.basket.empty? ? (puts @view_basket) : (puts ('Your basket is empty!'.yellow.center(@lineWidth)))
+    @shop.customer_total
+    puts ("• Your total is £#{@shop.order_total} •".blue.center(@lineWidth))
+    @view_basket.clear
+  when '4' then puts ('Which dish would you like to remove?'.yellow.center(@lineWidth))
+    dish_name = gets.chomp
+    if !@shop.customer.basket.select {|dish| /#{dish[:name]}/ =~ dish_name }.sample
+      puts ('That dish is not in your basket!'.red.center(@lineWidth))
+    else
+      @shop.customer.remove_dish(dish_name)
+      puts ''
+      puts ('The dish has been removed from your basket.'.green.center(@lineWidth))
+    end
   when '5' then @shop.customer.basket.clear
+    puts ('Your basket is now empty.'.yellow.center(@lineWidth))
   when '6' then @shop.confirm
-    !@shop.order.empty? ? send_text! : (puts 'Your payment is not correct.')
-    puts 'You will receive an sms with the delivery time' if !@shop.order.empty?
+    !@shop.order.empty? ? send_text! : (puts ('Your payment is not correct!'.red.center(@lineWidth)))
+     if !@shop.order.empty? 
+      puts ('Great! You will soon receive an sms with the expected delivery time! Goodbye and... Enjoy your meal!!'.green.center(@lineWidth))
+      exit
+    end
   when '0' then exit
   end
 end
