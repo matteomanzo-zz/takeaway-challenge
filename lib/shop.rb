@@ -8,7 +8,6 @@ class Shop
   attr_reader :menu, :order, :order_total, :customer, :total, :orded_dishes, :cost_total, :text, :client
 
   def initialize(menu = Menu.new, customer = Customer.new)
-    @client = Twilio::REST::Client.new 'ACd6a43f53972d62b07e2600aa0152fa18', '2013d2eeb583591792048efd68040231'
     @menu = menu
     @customer = customer
     @order = []
@@ -41,17 +40,5 @@ class Shop
   def confirm
     right_payment? ? order << customer.basket : (raise 'Your payment is not correct.')
   end
-
-  private
-
-  def send_text!
-    one_hour = 60*60
-    time = Time.now + one_hour
-    @client.account.sms.messages.create(
-      :from => "+441524220092",
-      :to =>   "+447479198894",
-      :body => "Thank you! Your order was placed and will be delivered before #{time}"
-    )
-  end
-
+  
 end
