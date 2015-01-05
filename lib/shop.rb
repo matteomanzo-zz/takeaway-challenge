@@ -5,7 +5,7 @@ require_relative 'text'
 
 class Shop
 
-  attr_reader :menu, :order, :order_total, :customer, :total, :ordered_dishes, :cost_total, :text, :client
+  attr_reader :menu, :order, :order_total, :customer, :total, :ordered_dishes, :cost_total
 
   def initialize(menu = Menu.new, customer = Customer.new)
     @text = Text.new
