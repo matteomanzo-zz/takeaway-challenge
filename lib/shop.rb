@@ -1,11 +1,14 @@
 require_relative 'menu.rb'
 require_relative 'customer.rb'
+require_relative 'text'
+
 
 class Shop
 
   attr_reader :menu, :order, :order_total, :customer, :total, :orded_dishes, :cost_total, :text, :client
 
   def initialize(menu = Menu.new, customer = Customer.new)
+    @text = Text.new
     @menu = menu
     @customer = customer
     @order = []
@@ -36,6 +39,10 @@ class Shop
   end
 
   def confirm
-    right_payment? ? order << customer.basket : 'Your payment is not correct.'
+    right_payment? ? (order << customer.basket; send_text!) : 'Your payment is not correct.'
+  end
+
+  def send_text!
+    text.send!
   end
 end

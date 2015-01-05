@@ -17,6 +17,7 @@ class Customer
   end
 
   def remove_dish(dish_name)
+    # basket.delete(dish_name) if basket.select {|dish| /#{dish[:name]}/ =~ dish_name.to_s }.sample
     basket.delete_if{|dish| dish[:name].to_s == dish_name.to_s}
   end
 end

@@ -2,13 +2,12 @@ require './lib/shop.rb'
 require 'rubygems'
 require 'twilio-ruby'
 require 'colorize'
-require './ACCOUNT_SID.rb'
-require './AUTH_TOKEN.rb'
+
 
 @lineWidth = 70
 
 @shop = Shop.new
-@client = Twilio::REST::Client.new ACCOUNT_SID, AUTH_TOKEN
+
 @view_dishes = []
 @shop.menu.dishes.each {|dish, price| @view_dishes << ("#{dish[:name]} - £#{dish[:price]}".cyan.center(@lineWidth))}
 @view_basket = []
@@ -68,15 +67,7 @@ def process
   end
 end
 
-def send_text!
-    one_hour = 60*60
-    time = Time.now + one_hour
-    @client.account.sms.messages.create(
-      :from => "+441524220092",
-      :to =>   "+447479198894",
-      :body => "Thank you! Your order was placed and will be delivered before #{time}"
-    )
-end
+
 
 
 intro
