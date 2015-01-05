@@ -5,7 +5,7 @@ require_relative 'text'
 
 class Shop
 
-  attr_reader :menu, :order, :order_total, :customer, :total, :orded_dishes, :cost_total, :text, :client
+  attr_reader :menu, :order, :order_total, :customer, :total, :ordered_dishes, :cost_total, :text, :client
 
   def initialize(menu = Menu.new, customer = Customer.new)
     @text = Text.new
@@ -13,13 +13,13 @@ class Shop
     @customer = customer
     @order = []
     @total = []
-    @orded_dishes = []
+    @ordered_dishes = []
     @cost_total = []
   end
 
   def customer_dishes
-    customer.basket.each{|cust_dish| orded_dishes << cust_dish[:name]}
-    orded_dishes
+    customer.basket.each{|cust_dish| ordered_dishes << cust_dish[:name]}
+    ordered_dishes
   end
 
   def customer_total

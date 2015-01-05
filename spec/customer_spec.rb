@@ -15,13 +15,22 @@ describe Customer do
 
   context 'order' do 
 
+    before{customer.add_dish('pizza', 2, 20)}
+
     it 'can add dishes to the basket' do 
-      expect{customer.add_dish('pizza', 2, 20)}.to change{customer.basket.length}.by 1
+      expect(customer.basket.length).to eq 1
+    end
+
+    it 'can display the dishes that are in the basket' do 
+      expect(customer.view_dishes).to eq ['pizza']
     end
 
     it 'can remove dishes from the basket' do
-      customer.add_dish('pasta', 2, 20)
-      expect{customer.remove_dish('pasta')}.to change{customer.basket.length}.by -1
+      expect{customer.remove_dish('pizza')}.to change{customer.basket.length}.by -1
+    end
+
+    it 'can display the total paid' do
+      expect(customer.total).to eq 20
     end
   end
 end

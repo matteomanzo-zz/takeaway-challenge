@@ -24,7 +24,7 @@ describe Shop do
       expect(shop.customer_total).to eq 50
     end
 
-    it 'should compare the total cost with the total paid' do
+    it 'should compare the total cost with the total paid and return true' do
       expect(shop.right_payment?).to be true
     end
 
@@ -41,8 +41,12 @@ describe Shop do
       shop.customer.add_dish('burger', 2, 31)
     end
 
-      it 'can display the total cost of the customer order' do 
+      it 'can display the total cost of the dishes that the customer ordered, no matter how much is the customer total' do 
       expect(shop.total_cost).to eq 50
+    end
+
+    it 'should compare the total cost with the total paid and return false' do
+      expect(shop.right_payment?).to be false
     end
 
     it 'should raise an error if the payment is not correct' do
