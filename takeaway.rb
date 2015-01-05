@@ -56,12 +56,8 @@ def select options
     paid = gets.chomp
     puts ("#{quantity} #{dish_name}s have been successfully added to your basket!".green.center(@lineWidth))
     @shop.customer.add_dish(dish_name, quantity, paid)
-  when '3' then puts ('Your current dishes in the basket are:'.yellow.center(@lineWidth))
-    puts ''
-    @shop.customer.basket.each {|dish, price, quantity| @view_basket << ("#{dish[:quantity]} portion/s of #{dish[:name]} - paying £#{dish[:paid]}".cyan.center(@lineWidth))}
-    !@shop.customer.basket.empty? ? (puts @view_basket) : (puts ('Your basket is empty!'.yellow.center(@lineWidth)))
-    @shop.customer_total
-    puts ("• Your total is £#{@shop.order_total} •".blue.center(@lineWidth))
+  when '3' then @shop.customer.basket.each {|dish, price, quantity| @view_basket << ("#{dish[:quantity]} portion/s of #{dish[:name]} - paying £#{dish[:paid]}".cyan.center(@lineWidth))}
+    !@shop.customer.basket.empty? ? (puts ('Your current dishes in the basket are:'.yellow.center(@lineWidth)); (puts ''); (puts @view_basket); @shop.customer_total; (puts ("• Your total is £#{@shop.order_total} •".blue.center(@lineWidth)))) : (puts ('Your basket is empty!'.yellow.center(@lineWidth)))
     @view_basket.clear
   when '4' then puts ('Which dish would you like to remove?'.yellow.center(@lineWidth))
     dish_name = gets.chomp
