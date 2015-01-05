@@ -1,4 +1,4 @@
-source "http://www.rubygems.org"
+source "https://rubygems.org"
 
 gem "twilio-ruby"
-gem 'rspec'
+gem "rspec"

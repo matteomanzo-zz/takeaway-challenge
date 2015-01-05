@@ -1,7 +1,5 @@
 require_relative 'menu.rb'
 require_relative 'customer.rb'
-require 'rubygems'
-require 'twilio-ruby'
 
 class Shop
 
@@ -38,7 +36,6 @@ class Shop
   end
 
   def confirm
-    right_payment? ? order << customer.basket : (raise 'Your payment is not correct.')
+    right_payment? ? order << customer.basket : 'Your payment is not correct.'
   end
-  
 end

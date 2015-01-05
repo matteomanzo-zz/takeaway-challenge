@@ -10,6 +10,8 @@ describe Shop do
 
   context 'order' do 
 
+    before 
+
      it 'can display the dishes selected by the customer' do 
       shop.customer.add_dish('pasta', 2, 20)
       shop.customer.add_dish('burger', 2, 30)
@@ -37,7 +39,7 @@ describe Shop do
     it 'should raise an error if the payment is not correct' do
       shop.customer.add_dish('pasta', 2, 25)
       shop.customer.add_dish('burger', 2, 33)
-      expect(lambda {shop.confirm}).to raise_error(RuntimeError, 'Your payment is not correct.')
+      expect(shop.confirm).to eq 'Your payment is not correct.'
     end
 
     it 'should accept the order if the payment is correct' do
