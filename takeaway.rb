@@ -65,15 +65,8 @@ def select options
     @view_basket.clear
   when '4' then puts ('Which dish would you like to remove?'.yellow.center(@lineWidth))
     dish_name = gets.chomp
-    if !@shop.customer.basket.select {|dish| /#{dish[:name]}/ =~ dish_name }.sample
-      puts ('That dish is not in your basket!'.red.center(@lineWidth))
-    else
-      @shop.customer.remove_dish(dish_name)
-      puts ''
-      puts ('The dish has been successfully removed from your basket.'.green.center(@lineWidth))
-    end
-  when '5' then @shop.customer.basket.clear
-    puts ('Your basket is now empty.'.yellow.center(@lineWidth))
+    !@shop.customer.basket.select {|dish| /#{dish[:name]}/ =~ dish_name }.sample ? (puts ('That dish is not in your basket!'.red.center(@lineWidth))) : (@shop.customer.remove_dish(dish_name); (puts ''); (puts ('The dish has been successfully removed from your basket.'.green.center(@lineWidth))))
+  when '5' then @shop.customer.basket.clear; puts ('Your basket is now empty.'.yellow.center(@lineWidth))
   when '6' then @shop.confirm
      !@shop.order.empty? ? (send_text!; (puts ('Great! You will soon receive an sms with the expected delivery time! Goodbye and... Enjoy your meal!!'.green.center(@lineWidth))); exit) : (puts ('Your payment is not correct.'.red.center(@lineWidth)))
   when '0' then exit
