@@ -37,23 +37,15 @@ end
 
 def select options
   case options
-  when '1' then puts ('Here\'s our menu:'.yellow.center(@lineWidth))
-    puts @view_dishes
-  when '2' then puts ('Here\'s our menu:'.yellow.center(@lineWidth))
-    puts @view_dishes
-    puts ''
-    puts ('Which dish would you like?'.yellow.center(@lineWidth))
+  when '1' then puts ('Here\'s our menu:'.yellow.center(@lineWidth)); puts @view_dishes
+  when '2' then puts ('Here\'s our menu:'.yellow.center(@lineWidth)); puts @view_dishes; puts ''; puts ('Which dish would you like?'.yellow.center(@lineWidth))
     dish_name = gets.chomp
     while !@shop.menu.dishes.select {|dish| /#{dish[:name]}/ =~ dish_name }.sample
-      puts ('Sorry, we don\'t have that dish!'.red.center(@lineWidth))
-      puts ''
-      puts ('Which dish would you like?'.yellow.center(@lineWidth))
+      puts ('Sorry, we don\'t have that dish!'.red.center(@lineWidth)); puts ''; puts ('Which dish would you like?'.yellow.center(@lineWidth))
       dish_name = gets.chomp
     end
-    puts ("How many portions of #{dish_name} would you like?".yellow.center(@lineWidth))
-    quantity = gets.chomp
-    puts ('How much is the total?'.yellow.center(@lineWidth))
-    paid = gets.chomp
+    puts ("How many portions of #{dish_name} would you like?".yellow.center(@lineWidth)); quantity = gets.chomp
+    puts ('How much is the total?'.yellow.center(@lineWidth)); paid = gets.chomp
     puts ("#{quantity} #{dish_name}s have been successfully added to your basket!".green.center(@lineWidth))
     @shop.customer.add_dish(dish_name, quantity, paid)
   when '3' then @shop.customer.basket.each {|dish, price, quantity| @view_basket << ("#{dish[:quantity]} portion/s of #{dish[:name]} - paying £#{dish[:paid]}".cyan.center(@lineWidth))}
