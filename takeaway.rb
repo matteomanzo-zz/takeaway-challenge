@@ -75,13 +75,7 @@ def select options
   when '5' then @shop.customer.basket.clear
     puts ('Your basket is now empty.'.yellow.center(@lineWidth))
   when '6' then @shop.confirm
-     if !@shop.order.empty? 
-      send_text!
-      puts ('Great! You will soon receive an sms with the expected delivery time! Goodbye and... Enjoy your meal!!'.green.center(@lineWidth))
-      exit
-    else
-      puts ('Your payment is not correct.'.red.center(@lineWidth))
-    end
+     !@shop.order.empty? ? (send_text!; (puts ('Great! You will soon receive an sms with the expected delivery time! Goodbye and... Enjoy your meal!!'.green.center(@lineWidth))); exit) : (puts ('Your payment is not correct.'.red.center(@lineWidth)))
   when '0' then exit
   end
 end
