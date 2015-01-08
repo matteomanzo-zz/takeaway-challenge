@@ -25,7 +25,7 @@ describe Customer do
     end
 
     it 'can display the total paid' do
-      expect(customer.total).to eq 20
+      expect(customer.view_total).to eq 20
     end
   end
 end

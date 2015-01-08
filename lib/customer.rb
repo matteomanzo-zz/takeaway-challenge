@@ -21,4 +21,9 @@ class Customer
     dishes
   end
 
+  def view_total
+    total = basket.inject(0){|sum, cust_dish| sum = sum + cust_dish[:paid]}
+    total
+  end
+
 end
