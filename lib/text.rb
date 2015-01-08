@@ -1,6 +1,6 @@
-require 'twilio-ruby'
-require './ACCOUNT_SID.rb'
-require './AUTH_TOKEN.rb'
+# require 'twilio-ruby'
+# require './ACCOUNT_SID.rb'
+# require './AUTH_TOKEN.rb'
 
 class Text
 

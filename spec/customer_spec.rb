@@ -3,14 +3,9 @@ require 'customer'
 describe Customer do 
 
   let(:customer){Customer.new}
-  let(:menu){Menu.new}
 
   it 'should have an empty basket by default' do 
     expect(customer.basket).to be_empty
-  end
-
-  it 'should have a menu to see dishes' do 
-    expect(customer.menu.dishes).to eq(menu.dishes)
   end
 
   context 'order' do 

@@ -9,7 +9,7 @@ class Menu
     @names = []
   end
 
-  def dish_names
+  def dish_names # do it with map and get rid of attr names
     dishes.each{|dish| @names << dish[:name]}
     @names
   end
