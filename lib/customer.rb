@@ -8,7 +8,7 @@ class Customer
   end
 
   def add_dish(dish_name, quantity, paid)
-      basket << {name: dish_name, quantity: quantity.to_i, paid: paid.to_i}
+    basket << {name: dish_name, quantity: quantity.to_i, paid: paid.to_i}
   end
 
   def remove_dish(dish_name)
