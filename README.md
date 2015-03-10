@@ -1,6 +1,8 @@
 Take Away Challenge
 ===================
 
+![image](takeawaysign.jpg)
+
 Tasks
 -----
 * Write a Takeaway program.
