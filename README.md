@@ -1,5 +1,5 @@
 #Take Away Challenge 
-####~ INCOMPLETE ~
+🚧 INCOMPLETE 🚧
 
 ###What is it?
 A take-away shop. The customer makes an order and pays. If the payment is correct he will receive a text on his mobile.
