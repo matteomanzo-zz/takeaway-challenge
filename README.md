@@ -1,12 +1,12 @@
 #Take Away Challenge 
 🚧 INCOMPLETE 🚧
 
-###What is it?
+##What is it?
 A take-away shop. The customer makes an order and pays. If the payment is correct he will receive a text on his mobile.
 
 ![image](takeawaysign.jpg)
 
-###Tasks
+##Tasks
 
 * Write a Takeaway program.
 * Implement the following functionality:
@@ -22,13 +22,13 @@ A take-away shop. The customer makes an order and pays. If the payment is correc
 
 * A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
 
-###CRC
+##CRC
 
 A MENU contains dishes with prices and a SHOP contains a MENU.
 The CUSTOMER adds dishes to its basket indicating what dish, how many dishes, and how much it is going to pay.
 The SHOP checks the order and, if the payment it's equal to the cost of the dishes it will send an SMS to the CUSTOMER, otherwise it will throw an error.
 
-#Menu
+####Menu
 
 Responsabilities  |  Collaborators
 ------------------|----------------
@@ -36,7 +36,7 @@ Responsabilities  |  Collaborators
   Contain prices  |       -
 -----------------------------------
 
-#Customer
+####Customer
 
 Responsabilities  |  Collaborators
 ------------------|---------------
@@ -44,7 +44,7 @@ Responsabilities  |  Collaborators
    Receive text   |	    Shop
 ----------------------------------
 
-#Shop
+####Shop
 
 Responsabilities  |  Collaborators
 ------------------|----------------
@@ -52,19 +52,19 @@ Responsabilities  |  Collaborators
   Check the total | Customer, Menu
 -----------------------------------
 
-#Text
+####Text
 
 Responsabilities  |  Collaborators
 ------------------|----------------
   Be sent         |	     Shop
 -----------------------------------
 
-###Still to complete/refactor
+##Still to complete/refactor
 
 - [ ] Fix Order class
 - [ ] Fix Cusomer class
 
-###Technologies
+##Technologies
 - Ruby
 - Twilio API
 
