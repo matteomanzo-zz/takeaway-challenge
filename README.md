@@ -1,10 +1,13 @@
-Take Away Challenge
-===================
+#Take Away Challenge 
+####~ INCOMPLETE ~
+
+###What is it?
+A take-away shop. The customer makes an order and pays. If the payment is correct he will receive a text on his mobile.
 
 ![image](takeawaysign.jpg)
 
-Tasks
------
+###Tasks
+
 * Write a Takeaway program.
 * Implement the following functionality:
 
@@ -19,8 +22,7 @@ Tasks
 
 * A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone.
 
-CRC
----
+###CRC
 
 A MENU contains dishes with prices and a SHOP contains a MENU.
 The CUSTOMER adds dishes to its basket indicating what dish, how many dishes, and how much it is going to pay.
@@ -56,3 +58,7 @@ Responsabilities  |  Collaborators
 ------------------|----------------
   Be sent         |	     Shop
 -----------------------------------
+
+###Technologies
+- Ruby
+- Twilio API
