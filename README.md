@@ -59,6 +59,14 @@ Responsabilities  |  Collaborators
   Be sent         |	     Shop
 -----------------------------------
 
+###Still to complete/refactor
+
+- [ ] Fix Order class
+- [ ] Fix Cusomer class
+
 ###Technologies
 - Ruby
 - Twilio API
+
+#####Testing
+- RSpec
